@@ -2,7 +2,7 @@
   background-color: rgba(11, 12, 16, 0.9);
   display: flex;
   top: 0 !important;
-  opacity: 0;
+  visibility: hidden;
   min-height: 8vh;
   line-height: 30px;
   width: 100%;
@@ -106,6 +106,17 @@
     transform: rotate(-45deg) translate(5px, -6px);
     background-color: #66fcf1 !important;
   }
+}
+
+.ecell-logo img {
+  height: 45px;
+  width: 45px;
+  margin-left: 20px;
+  transition: 0.5s ease-in-out;
+}
+
+.ecell-logo img:hover {
+  transform: scale(1.5);
 }
 
 @keyframes navFade {

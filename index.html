@@ -5,11 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-
     <title>Home|E-Cell ABV-IIITM</title>
 
     <title>E-Cell|IIITM Gwalior</title>
@@ -27,11 +22,6 @@
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
         integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
-
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
-
-
     <script type="text/javascript">
         function sleep(ms) {
             return new Promise(resolve => setTimeout(resolve, ms));
@@ -47,7 +37,6 @@
             const subs = document.querySelector(".sidebar");
             const body = document.getElementById("body");
             const counterPage = document.querySelectorAll(".counter");
-            const backToTop = document.querySelector(".backToTop");
 
             // Preloader
             await sleep(500);
@@ -95,7 +84,8 @@
             var counted_or_not = 0;
             body.addEventListener("scroll", () => {
                 var percentScroll = parseInt((body.scrollTop / body.scrollHeight) * 100);
-                navBar.style.opacity = (percentScroll >= 15 ? 1 : 0)
+                navBar.style.visibility = (percentScroll >= 15 ? 'visible' : 'hidden');
+                navBar.style.opacity = (percentScroll >= 15 ? 1 : 0);
 
                 var top_of_element = $(".initiatives").offset().top;
                 var body_height = $("#body").innerHeight();
@@ -117,7 +107,9 @@
                 }
             });
 
-            backToTop.addEventListener("click", async () => {
+            const circleIcon = document.getElementById("circle");
+            const arrowIcon = document.getElementById("double-arrow-up");
+            $(".backToTop").click(async function () {
                 const toGo = ($(document).height() - $(window).height()) / 100;
                 var i = body.scrollTop;
                 while (i > toGo) {
@@ -126,6 +118,12 @@
                     body.scrollTop = i;
                 }
                 body.scrollTop = 0;
+            }).mousemove(function () {
+                circleIcon.style.color = 'rgba(0, 0, 0, 0.8)';
+                arrowIcon.style.color = 'white';
+            }).mouseleave(function () {
+                circleIcon.style.color = 'rgba(255, 255, 255, 0.8)';
+                arrowIcon.style.color = 'black';
             });
         });
     </script>
@@ -139,7 +137,6 @@
 
         <!--Navbar-------------------------------------------------------------------------->
         <nav id="nav" class="navbar">
-
             <div class="ecell-logo">
                 <a href="#"><img src="images/E-CELL.png" id="ecell-logo"></a>
             </div>
@@ -171,7 +168,8 @@
 
         <!---------------------------------------------------------------------------------->
         <header>
-            <h1 style="font-size: 50px;">E-Cell, ABV-IIITM</h1>
+            <!-- <h1 style="font-size: 50px;">E-Cell, ABV-IIITM</h1> -->
+            <p>Timing, perseverance, and ten years of trying will eventually make you look like an overnight success.</p>
         </header>
 
 
@@ -193,8 +191,8 @@
         <!----------------------------------------------------------------------------------->
         <div class="backToTop">
             <span class="fa-stack">
-                <i class="fa fa-circle fa-stack-2x" style="color: rgba(255, 255, 255, 0.8) !important;"></i>
-                <i class="fa fa-angle-double-up fa-stack-1x" style="color: black !important;"></i>
+                <i class="fa fa-circle fa-stack-2x" id="circle"></i>
+                <i class="fa fa-angle-double-up fa-stack-1x" id="double-arrow-up"></i>
             </span>
         </div>
 
@@ -316,11 +314,11 @@
         <!--Footer-------------------------------------------------------------------------------------------->
         <div class="footer">
             <footer>
-    
+
                 <div class="container">
                     <div class="links">
                         <br>
-                            <h2>Links</h2>
+                        <h2>Links</h2>
                         <br>
                         <ul class="link-list">
                             <li class="link-item"><a href="#">Home</a></li>
@@ -332,32 +330,35 @@
                     </div>
                     <div class="social-media">
                         <br>
-                            <h2>Social Media </h2>
+                        <h2>Social Media </h2>
                         <br>
                         <ul class="link-list">
-                            <li class="link-item"><a href="https://www.facebook.com/ecell.iiitmG/"><i class="fa fa-facebook fa-lg"></i>facebook</a></li>
-                            <li class="link-item"><a href="https://www.linkedin.com/company/e-cell-iiit-gwalior/"><i class="fa fa-linkedin fa-lg"></i>linkedin</a></li>
-                            <li class="link-item"><a href="https://www.instagram.com/ecell_iiitm"><i class="fa fa-instagram fa-lg"></i>instagram</a></li>
+                            <li class="link-item"><a href="https://www.facebook.com/ecell.iiitmG/"><i
+                                        class="fa fa-facebook fa-lg"></i>facebook</a></li>
+                            <li class="link-item"><a href="https://www.linkedin.com/company/e-cell-iiit-gwalior/"><i
+                                        class="fa fa-linkedin fa-lg"></i>linkedin</a></li>
+                            <li class="link-item"><a href="https://www.instagram.com/ecell_iiitm"><i
+                                        class="fa fa-instagram fa-lg"></i>instagram</a></li>
                         </ul>
                     </div>
 
                     <div class="address" id="address">
                         <br>
-                            <h2>Address</h2>
+                        <h2>Address</h2>
                         <br>
                         <ul class="link-list">
                             <li>Morena Link Rd, IIITM Campus,<br> Gwalior, Madhya Pradesh, <br>Pin-Code: 474015</li>
                         </ul>
                     </div>
-                </div> 
-            
+                </div>
+
                 <div class="copyright">
                     <p>© Copyright 2020</p>
                 </div>
-            </div>
-
-            </footer>
         </div>
+
+        </footer>
+    </div>
     </div>
 
 </body>
